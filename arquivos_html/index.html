@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="assets/styles/style.css">
+  <title>Serviço de reserva</title>
+</head>
+
+<body>
+  <div class="palco">
+    <img src="assets/images/palco.jpg" alt="Imagem do palco de um teatro" class="imgPalco" />
+  </div>
+  <div class="plateia">
+    ${poltronas}
+  </div>
+  <div class="popup">
+    <div class="conteudo">
+      <img src="assets/images/x.png" alt="ícone de fechar" onclick="closePopup()" />
+      <form action="/compraingresso" method="get">
+        <p id="reservaTitle">RESERVA</p>
+        <div class="labelBox">
+          <label for="nome" class="labelBox">Nome</label>
+        </div>
+        <div>
+          <input type="text" name="nome" placeholder="Nome do responsável pela reserva" required id="nome" />
+        </div>
+        <div class="labelBox">
+          <label for="data" class="labelBox" id="reservaLabel">Data da reserva</label>
+        </div>
+        <div>
+          <input name="data" id="data" type="hidden" />
+        </div>
+        <input type="hidden" name="idPoltrona" id="idPoltrona" value="" />
+        <div class="reservaButton">
+          <button type="submit" id="btnReservar">Reservar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+
+</body>
+<script>
+  const popup = document.querySelector('.popup')
+
+  function openPopup(idPoltrona, reservada, nome, data) {
+    const idPoltronaInput = document.getElementById('idPoltrona');
+    const nomeReserva = document.getElementById('nome');
+    const dataReserva = document.getElementById('data');
+    const reservaLabel = document.getElementById('reservaLabel');
+    const reservatitle = document.getElementById('reservaTitle');
+    const divButtons = document.getElementsByClassName('reservaButton');
+
+
+    idPoltronaInput.value = idPoltrona;
+    popup.classList.add('active');
+
+    console.log({ nome, data });
+
+    if (nome !== null && nome !== '') {
+      nomeReserva.value = nome;
+      nomeReserva.disabled = true;
+      reservatitle.textContent = "Reservado por: "
+    }
+
+    if (data !== null && data !== '') {
+      dataReserva.value = data;
+      dataReserva.type = "text";
+      dataReserva.disabled = true;
+    } else {
+      reservaLabel.classList.add('inputHidden');
+    }
+
+    if (nome !== null && nome !== '') {
+      for (let i = 0; i < divButtons.length; i++) {
+        divButtons[i].className = 'reservadoButton';
+      }
+    }
+
+    const submitButton = document.getElementById('btnReservar');
+    if (reservada) {
+      submitButton.disabled = true;
+    } else {
+      submitButton.disabled = false;
+    }
+
+  }
+
+  function closePopup() {
+    popup.classList.remove('active')
+  }
+
+</script>
+
+</html>
