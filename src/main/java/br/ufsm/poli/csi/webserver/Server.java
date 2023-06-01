@@ -13,8 +13,8 @@ import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
-import br.ufsm.poli.csi.webserver.Reserva.Poltrona;
-import br.ufsm.poli.csi.webserver.Reserva.Reserva;
+import br.ufsm.poli.csi.webserver.Model.Poltrona;
+import br.ufsm.poli.csi.webserver.Model.Reserva;
 
 public class Server {
 

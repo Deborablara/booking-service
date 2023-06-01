@@ -1,4 +1,4 @@
-package br.ufsm.poli.csi.webserver.Reserva;
+package br.ufsm.poli.csi.webserver.Model;
 
 public class Reserva {
     private String nomeReservante = null;
